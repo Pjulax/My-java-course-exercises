@@ -1,2 +1,4 @@
+# Java intellij projects files
 **/.idea/**
+**/out/**
 *.iml
