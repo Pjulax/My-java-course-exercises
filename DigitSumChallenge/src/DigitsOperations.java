@@ -166,4 +166,73 @@ public class DigitsOperations {
         }
     }
 
+    public static void numberToWords(int number){
+        if(number < 0 ) {
+            System.out.printf("Invalid Value");
+        }
+        int digitCount = DigitsOperations.getDigitCount(number);
+        number = DigitsOperations.reverse(number);
+        for ( int i = 0; i < digitCount; i++){
+            switch(number%10){
+                case 0:
+                    System.out.printf("Zero ");
+                    break;
+                case 1:
+                    System.out.printf("One ");
+                    break;
+                case 2:
+                    System.out.printf("Two ");
+                    break;
+                case 3:
+                    System.out.printf("Three ");
+                    break;
+                case 4:
+                    System.out.printf("Four ");
+                    break;
+                case 5:
+                    System.out.printf("Five ");
+                    break;
+                case 6:
+                    System.out.printf("Six ");
+                    break;
+                case 7:
+                    System.out.printf("Seven ");
+                    break;
+                case 8:
+                    System.out.printf("Eight ");
+                    break;
+                case 9:
+                    System.out.printf("Nine ");
+                    break;
+            }
+            number /= 10;
+        }
+        System.out.println();
+
+    }
+
+    public static int reverse (int number){
+        int reversedNumber = 0;
+        while(number != 0) {
+            reversedNumber*=10;
+            reversedNumber += number % 10;
+            number/=10;
+        }
+        return reversedNumber;
+    }
+
+    public static int getDigitCount (int number){
+        if(number < 0){
+            return -1;
+        }
+        int digitCount = 1 ;
+        while(number > 9){
+            digitCount++;
+            number/=10;
+        }
+        return digitCount;
+    }
+
+
+
 }

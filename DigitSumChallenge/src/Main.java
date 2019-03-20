@@ -94,11 +94,38 @@ public class Main {
 
 //      PERFECT NUMBERS TEST
 
-        System.out.println(DigitsOperations.isPerfectNumber(5));
-        System.out.println(DigitsOperations.isPerfectNumber(6));
-        System.out.println(DigitsOperations.isPerfectNumber(8));
-        System.out.println(DigitsOperations.isPerfectNumber(28));
-        System.out.println(DigitsOperations.isPerfectNumber(-1));
-        System.out.println(DigitsOperations.isPerfectNumber(64));
+//        System.out.println(DigitsOperations.isPerfectNumber(5));
+//        System.out.println(DigitsOperations.isPerfectNumber(6));
+//        System.out.println(DigitsOperations.isPerfectNumber(8));
+//        System.out.println(DigitsOperations.isPerfectNumber(28));
+//        System.out.println(DigitsOperations.isPerfectNumber(-1));
+//        System.out.println(DigitsOperations.isPerfectNumber(64));
+
+//      NUMBERS TO WORDS FUNCTIONS TEST
+
+        System.out.println("======== REVERSE =========");
+        System.out.println(DigitsOperations.reverse(1565));
+        System.out.println(DigitsOperations.reverse(-123));
+        System.out.println(DigitsOperations.reverse(18));
+        System.out.println(DigitsOperations.reverse(16529));
+        System.out.println(DigitsOperations.reverse(0));
+        System.out.println(DigitsOperations.reverse(-1));
+        System.out.println(DigitsOperations.reverse(-5928));
+        System.out.println("==== GET DIGIT COUNT =====");
+        System.out.println(DigitsOperations.getDigitCount(12345));
+        System.out.println(DigitsOperations.getDigitCount(623));
+        System.out.println(DigitsOperations.getDigitCount(77444));
+        System.out.println(DigitsOperations.getDigitCount(9));
+        System.out.println(DigitsOperations.getDigitCount(5));
+        System.out.println(DigitsOperations.getDigitCount(-10));
+        System.out.println(DigitsOperations.getDigitCount(0));
+        System.out.println("==== NUMBERS TO WORDS ====");
+        DigitsOperations.numberToWords(1234);
+        DigitsOperations.numberToWords(875);
+        DigitsOperations.numberToWords(8);
+        DigitsOperations.numberToWords(-1);
+        DigitsOperations.numberToWords(-150);
+        DigitsOperations.numberToWords(10);
+        DigitsOperations.numberToWords(876);
     }
 }
