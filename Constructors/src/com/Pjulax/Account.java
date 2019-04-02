@@ -5,7 +5,7 @@ public class Account {
     private double balance;
     private String customerName;
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
 
     public Account() {
         this("56789", 2.50, "Default name", "Default address", "default phone");
@@ -13,7 +13,7 @@ public class Account {
     }
 
     public Account(String number, double balance, String customerName, String email,
-                   int phoneNumber) {
+                   String phoneNumber) {
         System.out.println("Account constructor with parameters called");
         this.number = number;
         this.balance = balance;
@@ -39,7 +39,7 @@ public class Account {
         return this.email;
     }
 
-    public int getPhoneNumber(){
+    public String getPhoneNumber(){
         return this.phoneNumber;
     }
 
@@ -59,7 +59,7 @@ public class Account {
         this.email = email;
     }
 
-    public void setPhoneNumber(int phoneNumber){
+    public void setPhoneNumber(String phoneNumber){
         this.phoneNumber = phoneNumber;
     }
 
