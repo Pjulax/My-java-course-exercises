@@ -1,9 +1,9 @@
 package com.Pjulax;
 
 public class VipCustomer {
-    String customersName;
-    double creditLimit;
-    String customersEmailAdress;
+    private String customersName;
+    private double creditLimit;
+    private String customersEmailAdress;
 
 
     public VipCustomer(){
