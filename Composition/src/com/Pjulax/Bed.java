@@ -16,6 +16,7 @@ public class Bed extends Furniture {
         System.out.println("Making the bed");
     }
 
+
     public String getBeddingMaterial() {
         return beddingMaterial;
     }
