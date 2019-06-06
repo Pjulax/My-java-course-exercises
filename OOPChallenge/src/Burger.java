@@ -25,12 +25,18 @@ public class Burger {
         return addition2;
     }
 
-    public double printFinalBill(){
-        System.out.println("Base Burger price: " + basePrice + "\n"+
-                            "Additions / prices : \n" +
-                            "#1: " + addition1.getName() + " / " + addition1.getPrice() + "\n" +
-                            "#2: " + addition2.getName() + " / " + addition2.getPrice() + "\n" +
-                            "Summary: " + (basePrice+addition1.getPrice()+addition2.getPrice()) + "$ to pay");
+    public double printPartialBill(){
+        System.out.println("Your order:" + this.getClass().getName() + "\n" +
+                        "Base Burger price: " + basePrice + "\n"+
+                        "Additions / prices : \n" +
+                        "#1: " + addition1.getName() + " / " + addition1.getPrice() + "$\n" +
+                        "#2: " + addition2.getName() + " / " + addition2.getPrice() + "$");
+        return basePrice + addition1.getPrice() + addition2.getPrice();
+    }
+
+    public void printFinalBill(){
+        double summaryPrice = printPartialBill();
+        System.out.println("Summary: " + summaryPrice + "$ to pay");
     }
 }
 

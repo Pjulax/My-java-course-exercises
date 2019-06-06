@@ -1,5 +1,5 @@
 public class Carrot extends Addition {
-    public Carrot(String name, double price) {
+    public Carrot() {
         super("Carrot", 0.49);
     }
 }

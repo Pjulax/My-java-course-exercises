@@ -1,5 +1,6 @@
 public class ChilliSauce extends Addition {
-    public ChilliSauce(String name, double price) {
+    public ChilliSauce()
+    {
         super("Chilli sauce", 0.69);
     }
 }

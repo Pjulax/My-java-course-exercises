@@ -17,13 +17,11 @@ public class Hamburger extends Burger {
     }
 
     @Override
-    public double printFinalBill(){
-        System.out.println("Base Burger price: " + basePrice + "\n"+
-                "Additions / prices : \n" +
-                "#1: " + getAddition1().getName() + " / " + getAddition1().getPrice() + "\n" +
-                "#2: " + getAddition2().getName() + " / " + getAddition2().getPrice() + "\n" +
-                "#2: " + getAddition3().getName() + " / " + getAddition3().getPrice() + "\n" +
-                "#2: " + getAddition4().getName() + " / " + getAddition4().getPrice() + "\n" +
-                "Summary: " + (basePrice+addition1.getPrice()+addition2.getPrice()+addition3.getPrice()+addition4.getPrice()) + "$ to pay");
+    public double printPartialBill(){
+        double superPartialPrice = super.printPartialBill();
+        System.out.println("#3: " + getAddition3().getName() + " / " + getAddition3().getPrice() + "$\n" +
+                            "#4: " + getAddition4().getName() + " / " + getAddition4().getPrice() + "$");
+        return superPartialPrice + getAddition3().getPrice() + getAddition4().getPrice();
     }
+
 }

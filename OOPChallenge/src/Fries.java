@@ -1,5 +1,5 @@
 public class Fries extends Addition {
-    public Fries(String name, double price) {
+    public Fries() {
         super("Fries", 1);
     }
 }

@@ -1,5 +1,5 @@
 public class Tomatoe extends Addition {
-    public Tomatoe(String name, double price) {
+    public Tomatoe() {
         super("Tomatoe", 0.49);
     }
 }

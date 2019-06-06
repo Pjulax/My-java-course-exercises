@@ -1,5 +1,5 @@
 public class OnionRings extends Addition {
-    public OnionRings(String name, double price) {
+    public OnionRings() {
         super("Onion rings", 0.99);
     }
 }
