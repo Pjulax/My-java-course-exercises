@@ -71,16 +71,7 @@ public class Branch {
         }
     }
 
-    public String getAccountOpenDate(String name){
-        Client client = searchClient(name);
-        if(client != null){
-            return client.getOpenDate().toString();
-        }
-        System.out.println("Cannot find client \"" + name + "\"");
-        return null;
-    }
-
-    public Client searchClient(String name) {
+    private Client searchClient(String name) {
         for(Client item : clientsList){
             if(item.getName().equals(name)){
                 return item;
