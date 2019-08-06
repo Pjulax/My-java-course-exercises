@@ -14,6 +14,15 @@ public class Album {
         return name;
     }
 
+    public void listSongs(){
+        if(!Songs.isEmpty()) {
+            for (int i = 0; i < Songs.size(); i++) {
+                Song item = Songs.get(i);
+                System.out.println("\t#" + (i + 1) + ". " + item.getName() + "\t" + item.getDuration());
+            }
+        }
+    }
+
     public Song getSong(String name) {
         Song searchedSong = searchSong(name);
         if(searchedSong != null){

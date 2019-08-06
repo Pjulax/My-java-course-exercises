@@ -8,6 +8,7 @@ public class Main {
 
     private static Scanner input = new Scanner(System.in);
     private static LinkedList<Song> playlist = new LinkedList<Song>();
+    private static int playListIterator = 0;
     private static ArrayList<Album> albums = new ArrayList<Album>();
 
     public static void main(String[] args) {
@@ -35,7 +36,15 @@ public class Main {
         cocoSongs.add(new Song("BetterBoi","1:00"));
         cocoSongs.add(new Song("TheBestBoi","1:00"));
         albums.add(new Album("Coco Jambo", cocoSongs));
+        LinkedList<Song> ace = new LinkedList<Song>();
+        ace.add(new Song("qwe","1:00"));
+        ace.add(new Song("asd","1:00"));
+        ace.add(new Song("zxc","1:00"));
+        ace.add(new Song("wer","1:00"));
+        ace.add(new Song("sdf","1:00"));
 
+        ace.add(new Song("xcv","1:00"));
+        albums.add(new Album("ace", ace));
 
         boolean ifQuit = false;
 
@@ -48,27 +57,27 @@ public class Main {
                 case 0:
                     printMenu();
                     break;
-//                case 1:
-//                    printPlaylist();
-//                    break;
-//                case 2:
-//                    printAllAlbums();
-//                    break;
-//                case 3:
-//                    addSong();
-//                    break;
-//                case 4:
-//                    nextSong();
-//                    break;
-//                case 5:
-//                    previousSong();
-//                    break;
-//                case 6:
-//                    repeatSong();
-//                    break;
-//                case 7:
-//                    removeSong();
-//                    break;
+                case 1:
+                    printPlaylist();
+                    break;
+                case 2:
+                    printAllAlbums();
+                    break;
+                case 3:
+                    addSong();
+                    break;
+                case 4:
+                    nextSong();
+                    break;
+                case 5:
+                    previousSong();
+                    break;
+                case 6:
+                    repeatSong();
+                    break;
+                case 7:
+                    removeSong();
+                    break;
                 case 8:
                     addAlbum();
                     break;
@@ -83,14 +92,135 @@ public class Main {
         System.out.println("Winamp Alfa 0.0.0.1 Music Player");
         System.out.println("========================================");
         System.out.print("1. Show playlist\n" +
-                        "2. Add song to playlist\n" +
-                        "3. Play next song\n" +
-                        "4. Play previous song\n" +
-                        "5. Repeat current song\n" +
-                        "6. Remove current song from playlist\n" +
-                        "7. Add new album with music\n" +
+                        "2. Show music library\n" +
+                        "3. Add song to playlist\n" +
+                        "4. Play next song\n" +
+                        "5. Play previous song\n" +
+                        "6. Repeat current song\n" +
+                        "7. Remove current song from playlist\n" +
+                        "8. Add new album with music\n" +
+                        "9. Quit\n" +
                         "========================================\n\n");
     }
+
+    private static void printPlaylist(){
+        if(!playlist.isEmpty()) {
+            System.out.println("Your playlist:");
+            for (int i = 0; i < playlist.size(); i++) {
+                System.out.print("\t #" + (i+1)+ " ");
+                if (i == playListIterator) {
+                    System.out.print(" *Currently playing* ");
+                }
+                System.out.println("\"" + playlist.get(i).getName() +
+                        "\" duration: " + playlist.get(i).getDuration());
+            }
+            System.out.println("===============================\n\n");
+        }
+        else{
+            System.out.println("Playlist is empty!");
+        }
+    }
+
+
+    private static void printAllAlbums(){
+        System.out.println("Albums in library:");
+        for (int i = 0; i < albums.size(); i++){
+            Album item = albums.get(i);
+            System.out.println("#" + (i+1) + " album: " + item.getName());
+            item.listSongs();
+        }
+    }
+
+    private static void addSong(){
+        System.out.println("Enter album name: ");
+        String albumName = input.nextLine();
+
+        if(!albumName.equals("")) {
+
+            System.out.println("Enter song name: ");
+            String songName = input.nextLine();
+
+            if(!songName.equals("")) {
+                Album album = searchAlbum(albumName);
+
+                if (album != null) {
+                    Song song = album.getSong(songName);
+
+                    if(song != null){
+                        playlist.add(song);
+                        System.out.println("Song added");
+                    }
+                    else{
+                        System.out.println("Song not found");
+                        return;
+                    }
+                }
+                else {
+                    System.out.println("Cannot found album");
+                }
+            }
+        }
+        else {
+            System.out.println("Invalid data");
+        }
+    }
+
+    private static void nextSong(){
+        if(!playlist.isEmpty()) {
+            if(playListIterator >= 0 && playListIterator < (playlist.size()-1)){
+                playListIterator++;
+                System.out.println("Now playing " + playlist.get(playListIterator).getName() + ", duration: " + playlist.get(playListIterator).getDuration());
+            }
+            else{
+                System.out.println("Next song doesn't exist");
+            }
+        }else {
+            System.out.println("Playlist is empty!");
+        }
+    }
+
+    private static void previousSong(){
+        if(!playlist.isEmpty()) {
+            if (playListIterator > 0 && playListIterator < playlist.size()) {
+                playListIterator--;
+                System.out.println("Now playing " + playlist.get(playListIterator).getName() + ", duration: " + playlist.get(playListIterator).getDuration());
+            } else {
+                System.out.println("This is first song in playlist");
+            }
+        }else {
+            System.out.println("Playlist is empty!");
+        }
+    }
+
+    private static void repeatSong(){
+        if(!playlist.isEmpty()){
+            if(playListIterator >= 0 && playListIterator < playlist.size()){
+                playlist.add(playListIterator, playlist.get(playListIterator));
+            }
+            else {
+                System.out.println("Iterator out of bound");
+            }
+        }
+        else{
+            System.out.println("Playlist is empty");
+        }
+    }
+
+    private static void removeSong(){
+        if(!playlist.isEmpty()){
+            if(playListIterator >= 0 && playListIterator < playlist.size()){
+                playlist.remove(playListIterator);
+                System.out.println("Removed song from playlist");
+            }
+            else {
+                System.out.println("Iterator out of bound");
+            }
+        }
+        else{
+            System.out.println("Playlist is empty");
+        }
+    }
+
 
     private static void addAlbum(){
         System.out.println("Enter name of new album:");
@@ -120,6 +250,14 @@ public class Main {
         }
     }
 
+    private static Album searchAlbum(String name){
+        for( Album item : albums){
+            if(item.getName().equals(name)){
+                return item;
+            }
+        }
+        return null;
+    }
 
 
 
